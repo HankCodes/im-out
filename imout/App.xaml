@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="imout.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+        <Thickness x:Key="PageMargin">20</Thickness>
+
+        <!-- Colors -->
+        <Color x:Key="PrimaryColor">#1976D2</Color>
+        <Color x:Key="SecondaryColor">White</Color>
+
+        <Color x:Key="BackgroundColor">#122647</Color>
+        <Color x:Key="TextColor">White</Color>
+
+        <!-- Implicit styles -->
+        <Style TargetType="ContentPage"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource BackgroundColor}" />
+        </Style>
+
+        <Style TargetType="Button"
+               x:Key="buttonPrimary">
+            <Setter Property="FontSize"
+                    Value="Medium" />
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource PrimaryColor}" />
+            <Setter Property="TextColor"
+                    Value="{StaticResource SecondaryColor}" />
+            <Setter Property="CornerRadius"
+                    Value="50" />
+            <Setter Property="Margin"
+                    Value="10, 50" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+        </Style>
+
+        <Style TargetType="Label"
+               x:Key="headline">
+            <Setter Property="FontSize"
+                    Value="Large" />
+            <Setter Property="HorizontalTextAlignment"
+                    Value="Center" />
+            <Setter Property="Margin"
+                    Value="20" />
+        </Style>
+
+         <Style TargetType="Entry">
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="PlaceholderColor"
+                    Value="{StaticResource TextColor}" />
+
+        </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
