@@ -4,6 +4,6 @@ namespace imout.Core.Observer
 {
     public interface IObserver
     {
-        void OnCahnge(NotificationDTO notification);
+        public void OnCahnge(NotificationDTO notification);
     }
 }

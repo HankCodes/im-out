@@ -2,9 +2,15 @@
 
 namespace imout.Core.Model
 {
-    public struct NotificationDTO
+    public class NotificationDTO
     {
-        List<Contact> contacts;
-        readonly string message;
+        public List<Contact> Contacts { get; set; }
+        public string Message { get; set; }
+
+        public NotificationDTO(List<Contact> contacts, string message)
+        {
+            Contacts = contacts;
+            Message = message;
+        }
     }
 }
