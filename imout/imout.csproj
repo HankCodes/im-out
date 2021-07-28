@@ -17,9 +17,15 @@
   <ItemGroup>
     <None Remove="Core\" />
     <None Remove="Core\ViewModel\" />
+    <None Remove="Core\MessageSenders\" />
+    <None Remove="Core\Model\" />
+    <None Remove="Core\Observer\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Core\ViewModel\" />
+    <Folder Include="Core\MessageSenders\" />
+    <Folder Include="Core\Model\" />
+    <Folder Include="Core\Observer\" />
   </ItemGroup>
 </Project>
