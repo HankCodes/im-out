@@ -18,8 +18,7 @@ namespace imout.Core.Model
             get => name;
             set
                 {
-                    if (value.Length > 40) throw new ArgumentOutOfRangeException("Name cannot be longer than 40 characters");
-                    if (value.Length < 1) throw new ArgumentOutOfRangeException("Name cannot be empty");
+                    if (value.Length > 40 || value.Length < 1) throw new ArgumentOutOfRangeException("Name must be between 1-40 characters");
 
                     name = value;
                 }

@@ -20,4 +20,10 @@
   <ItemGroup>
     <ProjectReference Include="..\imout\imout.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
 </Project>
