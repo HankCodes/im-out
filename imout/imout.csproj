@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Core\" />
@@ -20,6 +21,8 @@
     <None Remove="Core\MessageSenders\" />
     <None Remove="Core\Model\" />
     <None Remove="Core\Observer\" />
+    <None Remove="Core\Utils\" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -27,5 +30,6 @@
     <Folder Include="Core\MessageSenders\" />
     <Folder Include="Core\Model\" />
     <Folder Include="Core\Observer\" />
+    <Folder Include="Core\Utils\" />
   </ItemGroup>
 </Project>
