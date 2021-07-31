@@ -10,7 +10,6 @@ using FluentAssertions;
 
 namespace tests.Model
 {
-
     public class NotificationRepositoryTest
     {
         [Fact]
@@ -71,7 +70,6 @@ namespace tests.Model
             notification.Name = "Notification 1";
             notification.TriggerLevel = 2;
             notification.Message = "I'm Out";
-
 
             return notification;
         }
