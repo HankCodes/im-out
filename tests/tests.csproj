@@ -16,6 +16,7 @@
 <PrivateAssets>all</PrivateAssets>
 </PackageReference>
     <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
   <ItemGroup>
     <None Remove="Model\" />
     <None Remove="Moq" />
+    <None Remove="FluentAssertions" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />

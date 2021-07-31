@@ -2,8 +2,8 @@
 {
     public interface IStorageWrapper
     {
-        public string Get();
+        string Get();
 
-        public void Set(string value);
+        void Set(string value);
     }
 }
