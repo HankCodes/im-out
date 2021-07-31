@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using imout.Core.Utils;
 using Newtonsoft.Json;
 
@@ -7,9 +6,9 @@ namespace imout.Core.Model.Repository
 {
     public class NotificationRepository
     {
-        private StorageWrapper storage;
+        private IStorageWrapper storage;
 
-        public NotificationRepository(StorageWrapper storageWrapper)
+        public NotificationRepository(IStorageWrapper storageWrapper)
         {
             storage = storageWrapper;
         }

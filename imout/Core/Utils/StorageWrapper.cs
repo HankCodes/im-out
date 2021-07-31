@@ -2,7 +2,7 @@
 
 namespace imout.Core.Utils
 {
-    public class StorageWrapper
+    public class StorageWrapper: IStorageWrapper
     {
         private string storageKey = "im-out-storage";
 
