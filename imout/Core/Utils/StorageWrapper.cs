@@ -4,14 +4,16 @@ namespace imout.Core.Utils
 {
     public class StorageWrapper
     {
-        public string Get(string key, string defaultValue)
+        private string storageKey = "im-out-storage";
+
+        public string Get()
         {
-            return Preferences.Get(key, defaultValue);
+            return Preferences.Get(storageKey, "[]");
         }
 
-        public void Set(string key, string value)
+        public void Set(string value)
         {
-            Preferences.Set(key, value);
+            Preferences.Set(storageKey, value);
         }
     }
 }
