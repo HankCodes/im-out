@@ -35,12 +35,16 @@ namespace imout.Core.Model.Service
             notifications.Add(newNotification);
 
             notificationRepo.Set(notifications);
-
         }
 
-        public void Delete(Notification notification)
+        public void Delete(Notification notificationToDelete)
         {
+            List<Notification> notifications = notificationRepo.Get();
+            Notification notification = notifications.Find(not => not.Id == notificationToDelete.Id);
+            if (notification is null) throw new Exception("Notification does not exists");
 
+            notifications.Remove(notification);
+            notificationRepo.Set(notifications);
         }
     }
 }
