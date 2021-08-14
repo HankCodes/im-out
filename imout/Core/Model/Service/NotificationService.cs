@@ -15,6 +15,8 @@ namespace imout.Core.Model.Service
 
         public void Create(Notification notification)
         {
+            if (notification is null) throw new ArgumentNullException("Argument passed to Notification.Update() cannot be null");
+
             List<Notification> notifications = notificationRepo.Get();
             notifications.ForEach(not => {
                 if (not.Id == notification.Id) throw new Exception("Notification already exists");
@@ -27,6 +29,8 @@ namespace imout.Core.Model.Service
 
         public void Update(Notification newNotification)
         {
+            if (newNotification is null) throw new ArgumentNullException("Argument passed to Notification.Update() cannot be null");
+
             List<Notification> notifications = notificationRepo.Get();
             Notification oldNotification = notifications.Find(not => not.Id == newNotification.Id);
             if (oldNotification is null) throw new Exception("Notification does not exists");

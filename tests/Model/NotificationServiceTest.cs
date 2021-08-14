@@ -61,6 +61,24 @@ namespace tests.Model
             Assert.Equal(expectedLastIdInList, actualLastIdInList);
         }
 
+        [Fact]
+        public void Create_NullAsArgument_ThrowsArgumentNullException()
+        {
+            // Arrange
+            List<Notification> storageList = new List<Notification>();
+            Notification notification = null;
+
+            var repositoryMock = new Mock<IRepository>();
+            repositoryMock.Setup(x => x.Get()).Returns(storageList);
+            repositoryMock.Setup(x => x.Set(It.IsAny<List<Notification>>()));
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+
+            // Assert
+            Assert.Throws<ArgumentNullException>(() => sut.Create(notification));
+        }
+
         private Notification generateNotification()
         {
             Guid guid = Guid.NewGuid();
