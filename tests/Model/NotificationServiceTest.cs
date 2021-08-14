@@ -85,13 +85,14 @@ namespace tests.Model
             Guid expectedId = notification.Id;
             string expectedName = "New name";
 
-            Notification notificationUpdated = CloneNotification(notification);
-            notificationUpdated.Name = expectedName;
-
             List<Notification> storageList = new List<Notification>()
             {
                 notification
             };
+
+            Notification notificationUpdated = CloneNotification(notification);
+            notificationUpdated.Name = expectedName;
+
 
             var repositoryMock = new Mock<IRepository>();
             repositoryMock.Setup(x => x.Get()).Returns(storageList);
@@ -110,6 +111,44 @@ namespace tests.Model
             Assert.Equal(expectedName, actualName);
             Assert.Equal(expectedId, actualId);
             repositoryMock.Verify((m) => m.Set(storageListUpdated), Times.Once());
+        }
+
+        [Fact]
+        public void Update_WillThrow_IfStorageIsEmpty()
+        {
+            // Arrange
+            Notification notification = generateNotification();
+            List<Notification> storageList = new List<Notification>();
+
+            var repositoryMock = new Mock<IRepository>();
+            repositoryMock.Setup(x => x.Get()).Returns(storageList);
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+
+            // Assert
+            Assert.Throws<Exception>(() => sut.Update(notification));
+        }
+
+        [Fact]
+        public void Update_WillThrow_IfNotificationDoesNotExist()
+        {
+            // Arrange
+            Notification notification = generateNotification();
+            List<Notification> storageList = new List<Notification>() {
+                generateNotification(),
+                generateNotification(),
+                generateNotification()
+            };
+
+            var repositoryMock = new Mock<IRepository>();
+            repositoryMock.Setup(x => x.Get()).Returns(storageList);
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+
+            // Assert
+            Assert.Throws<Exception>(() => sut.Update(notification));
         }
 
         private Notification generateNotification()
