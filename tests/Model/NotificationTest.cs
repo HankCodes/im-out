@@ -2,7 +2,7 @@
 using Xunit;
 using imout.Core.Model;
 
-namespace tests
+namespace tests.Model
 {
     public class NotificationTest
     {

@@ -24,6 +24,7 @@
     <None Remove="Core\Utils\" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Core\Model\Repository\" />
+    <None Remove="Core\Model\Service\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -33,5 +34,6 @@
     <Folder Include="Core\Observer\" />
     <Folder Include="Core\Utils\" />
     <Folder Include="Core\Model\Repository\" />
+    <Folder Include="Core\Model\Service\" />
   </ItemGroup>
 </Project>

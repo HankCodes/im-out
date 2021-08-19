@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace imout.Core.Model.Repository
 {
-    public class NotificationRepository
+    public class NotificationRepository: IRepository
     {
         private IStorageWrapper storage;
 
