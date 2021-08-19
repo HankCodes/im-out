@@ -15,7 +15,7 @@ namespace imout.Core.Model.Service
 
         public void Create(Notification notification)
         {
-            if (notification is null) throw new ArgumentNullException("Argument passed to Notification.Update() cannot be null");
+            if (notification is null) throw new ArgumentNullException("notification", "Argument passed to Notification.Update() cannot be null");
 
             List<Notification> notifications = notificationRepo.Get();
             notifications.ForEach(not => {
@@ -27,22 +27,24 @@ namespace imout.Core.Model.Service
             notificationRepo.Set(notifications);
         }
 
-        public void Update(Notification newNotification)
+        public void Update(Notification updatedNotification)
         {
-            if (newNotification is null) throw new ArgumentNullException("Argument passed to Notification.Update() cannot be null");
+            if (updatedNotification is null) throw new ArgumentNullException("updatedNotification", "Argument passed to Notification.Update() cannot be null");
 
             List<Notification> notifications = notificationRepo.Get();
-            Notification oldNotification = notifications.Find(not => not.Id == newNotification.Id);
+            Notification oldNotification = notifications.Find(not => not.Id == updatedNotification.Id);
             if (oldNotification is null) throw new Exception("Notification does not exists");
 
             notifications.Remove(oldNotification);
-            notifications.Add(newNotification);
+            notifications.Add(updatedNotification);
 
             notificationRepo.Set(notifications);
         }
 
         public void Delete(Notification notificationToDelete)
         {
+            if (notificationToDelete is null) throw new ArgumentNullException("notificationToDelete", "Argument passed to Notification.Delete() cannot be null");
+
             List<Notification> notifications = notificationRepo.Get();
             Notification notification = notifications.Find(not => not.Id == notificationToDelete.Id);
             if (notification is null) throw new Exception("Notification does not exists");

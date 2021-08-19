@@ -65,16 +65,11 @@ namespace tests.Model
         [Fact]
         public void Create_NullAsArgument_ThrowsArgumentNullException()
         {
-            List<Notification> storageList = new List<Notification>();
-            Notification notification = null;
-
             var repositoryMock = new Mock<IRepository>();
-            repositoryMock.Setup(x => x.Get()).Returns(storageList);
-            repositoryMock.Setup(x => x.Set(It.IsAny<List<Notification>>()));
 
             NotificationService sut = new NotificationService(repositoryMock.Object);
 
-            Assert.Throws<ArgumentNullException>(() => sut.Create(notification));
+            Assert.Throws<ArgumentNullException>(() => sut.Create(null));
         }
 
         [Fact]
@@ -114,7 +109,7 @@ namespace tests.Model
         }
 
         [Fact]
-        public void Update_WillThrow_IfStorageIsEmpty()
+        public void Update_EmptyStorage_WillThrow()
         {
             // Arrange
             Notification notification = generateNotification();
@@ -131,7 +126,20 @@ namespace tests.Model
         }
 
         [Fact]
-        public void Update_WillThrow_IfNotificationDoesNotExist()
+        public void Update_Null_Throws()
+        {
+            // Arrange
+            var repositoryMock = new Mock<IRepository>();
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+
+            // Assert
+            Assert.Throws<ArgumentNullException>(() => sut.Update(null));
+        }
+
+        [Fact]
+        public void Update_NonexistingNotification_WillThrow()
         {
             // Arrange
             Notification notification = generateNotification();
@@ -149,6 +157,100 @@ namespace tests.Model
 
             // Assert
             Assert.Throws<Exception>(() => sut.Update(notification));
+        }
+
+        [Fact]
+        public void Update_UpdatedNotification_WontStoreSameNotificationTwice()
+        {
+            // Arrange
+            Notification notification = generateNotification();
+            List<Notification> storageList = new List<Notification>() {
+                notification,
+                generateNotification(),
+                generateNotification(),
+            };
+            Notification notificationUpdated = CloneNotification(notification);
+            notificationUpdated.Name = "New Name";
+            List<Notification> actualList = null;
+
+            var repositoryMock = new Mock<IRepository>();
+            repositoryMock.Setup(x => x.Get()).Returns(storageList);
+            repositoryMock
+                    .Setup(x => x.Set(It.IsAny<List<Notification>>()))
+                    .Callback<List<Notification>>(n => actualList = n );
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+            sut.Update(notificationUpdated);
+
+            int actual = actualList.FindAll(n => n.Id == notification.Id).Count;
+            int expected = 1;
+
+            // Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public void Delete_UnexistingNotification_WillThrow()
+        {
+            // Arrange
+            Notification notification = generateNotification();
+            List<Notification> storageList = new List<Notification>() {
+                generateNotification(),
+                generateNotification(),
+                generateNotification()
+            };
+
+            var repositoryMock = new Mock<IRepository>();
+            repositoryMock.Setup(x => x.Get()).Returns(storageList);
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+
+            // Assert
+            Assert.Throws<Exception>(() => sut.Delete(notification));
+        }
+
+        [Fact]
+        public void Delete_Notification_Successfully()
+        {
+            // Arrange
+            Notification notification = generateNotification();
+            List<Notification> storageList = new List<Notification>() {
+                notification,
+                generateNotification(),
+                generateNotification()
+            };
+            List<Notification> actualList = null;
+
+            var repositoryMock = new Mock<IRepository>();
+            repositoryMock.Setup(x => x.Get()).Returns(storageList);
+            repositoryMock
+                .Setup(x => x.Set(It.IsAny<List<Notification>>()))
+                .Callback<List<Notification>>(n => actualList = n);
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+            sut.Delete(notification);
+            int actual = actualList.FindAll(n => n.Id == notification.Id).Count;
+            int expected = 0;
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Delete_Null_Throws()
+        {
+            // Arrange
+            var repositoryMock = new Mock<IRepository>();
+
+            // Act
+            NotificationService sut = new NotificationService(repositoryMock.Object);
+
+            // Assert
+            Assert.Throws<ArgumentNullException>(() => sut.Delete(null));
         }
 
         private Notification generateNotification()
