@@ -15,7 +15,7 @@ namespace imout.Core.Model.Service
 
         public void Create(Notification notification)
         {
-            if (notification is null) throw new ArgumentNullException("notification", "Argument passed to Notification.Update() cannot be null");
+            if (notification is null) throw new ArgumentNullException("notification", "Argument passed to NotificationService.Update() cannot be null");
 
             List<Notification> notifications = notificationRepo.Get();
             notifications.ForEach(not => {
@@ -29,7 +29,7 @@ namespace imout.Core.Model.Service
 
         public void Update(Notification updatedNotification)
         {
-            if (updatedNotification is null) throw new ArgumentNullException("updatedNotification", "Argument passed to Notification.Update() cannot be null");
+            if (updatedNotification is null) throw new ArgumentNullException("updatedNotification", "Argument passed to NotificationService.Update() cannot be null");
 
             List<Notification> notifications = notificationRepo.Get();
             Notification oldNotification = notifications.Find(not => not.Id == updatedNotification.Id);
@@ -43,7 +43,7 @@ namespace imout.Core.Model.Service
 
         public void Delete(Notification notificationToDelete)
         {
-            if (notificationToDelete is null) throw new ArgumentNullException("notificationToDelete", "Argument passed to Notification.Delete() cannot be null");
+            if (notificationToDelete is null) throw new ArgumentNullException("notificationToDelete", "Argument passed to NotificationService.Delete() cannot be null");
 
             List<Notification> notifications = notificationRepo.Get();
             Notification notification = notifications.Find(not => not.Id == notificationToDelete.Id);
