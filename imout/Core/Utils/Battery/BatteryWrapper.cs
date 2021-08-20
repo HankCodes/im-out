@@ -19,7 +19,6 @@ namespace imout.Core.Utils.Battery
             {
                 Level = e.ChargeLevel,
                 IsCharging = e.State == BatteryState.Charging
-                
             };
             
             OnChange(evArgs);
