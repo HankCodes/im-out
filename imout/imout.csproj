@@ -25,6 +25,7 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Core\Model\Repository\" />
     <None Remove="Core\Model\Service\" />
+    <None Remove="Core\Utils\Battery\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -35,5 +36,6 @@
     <Folder Include="Core\Utils\" />
     <Folder Include="Core\Model\Repository\" />
     <Folder Include="Core\Model\Service\" />
+    <Folder Include="Core\Utils\Battery\" />
   </ItemGroup>
 </Project>
