@@ -1,4 +1,4 @@
-﻿namespace imout.Core.Utils
+﻿namespace imout.Core.Utils.Storage
 {
     public interface IStorageWrapper
     {

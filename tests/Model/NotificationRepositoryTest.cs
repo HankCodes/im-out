@@ -2,11 +2,11 @@
 using Xunit;
 using Moq;
 using imout.Core.Model.Repository;
-using imout.Core.Utils;
 using imout.Core.Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using FluentAssertions;
+using imout.Core.Utils.Storage;
 
 namespace tests.Model
 {
