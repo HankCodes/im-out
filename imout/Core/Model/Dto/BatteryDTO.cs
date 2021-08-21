@@ -1,5 +1,5 @@
 ﻿using System;
-namespace imout.Core.Model
+namespace imout.Core.Model.Dto
 {
     public class BatteryDTO
     {

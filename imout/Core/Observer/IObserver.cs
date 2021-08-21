@@ -1,4 +1,4 @@
-﻿using imout.Core.Model;
+﻿using imout.Core.Model.Dto;
 
 namespace imout.Core.Observer
 {

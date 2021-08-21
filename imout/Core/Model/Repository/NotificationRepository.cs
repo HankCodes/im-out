@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using imout.Core.Utils;
+using imout.Core.Utils.Storage;
 using Newtonsoft.Json;
 
 namespace imout.Core.Model.Repository

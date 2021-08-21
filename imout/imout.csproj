@@ -26,6 +26,9 @@
     <None Remove="Core\Model\Repository\" />
     <None Remove="Core\Model\Service\" />
     <None Remove="Core\Utils\Battery\" />
+    <None Remove="Core\Utils\Storage\" />
+    <None Remove="Core\Model\Dto\" />
+    <None Remove="Core\Utils\ContactPicker\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -37,5 +40,8 @@
     <Folder Include="Core\Model\Repository\" />
     <Folder Include="Core\Model\Service\" />
     <Folder Include="Core\Utils\Battery\" />
+    <Folder Include="Core\Utils\Storage\" />
+    <Folder Include="Core\Model\Dto\" />
+    <Folder Include="Core\Utils\ContactPicker\" />
   </ItemGroup>
 </Project>

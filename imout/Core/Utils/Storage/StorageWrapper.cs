@@ -1,6 +1,6 @@
 ﻿using Xamarin.Essentials;
 
-namespace imout.Core.Utils
+namespace imout.Core.Utils.Storage
 {
     public class StorageWrapper: IStorageWrapper
     {
